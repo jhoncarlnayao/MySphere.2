@@ -1,0 +1,39 @@
+body{
+    overflow: hidden;
+}
+
+
+#card-1,
+#card-2,
+#card-3{
+    width: 32pc;
+    height: 25pc;
+}
+
+
+#card-4{
+    margin-top: 30px;
+    height: 27pc;
+}
+
+#mini-card1{
+    width: 9pc;
+    height: 8pc;
+}
+
+#mini-card4,
+#mini-card5,
+#mini-card6{
+    width: 9pc;
+    height: 7pc;
+}
+
+#mini-card-img1,
+#mini-card-img2,
+#mini-card-img3
+{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-self: center;
+}
