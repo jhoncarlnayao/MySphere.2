@@ -86,10 +86,15 @@
                           <p class="text-gray-500 dark:text-neutral-400">
                             Click here to <em class="font-semibold text-gray-800 dark:text-neutral-200">mark your attendance </em> for today. Ensure your presence is recorded and stay up to date with your class attendance.
                           </p>
-                          <button type="button" class=" float-end m-15 mt-16 py-3 px-10 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                          <button type="button" class=" float-end m-15 mt-16 py-3 px-10 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none" aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-slide-down-animation-modal" data-hs-overlay="#hs-slide-down-animation-modal">
                             Make an Attendance
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-badge-plus"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><line x1="12" x2="12" y1="8" y2="16"/><line x1="8" x2="16" y1="12" y2="12"/></svg>
                           </button>
+                          <div id="hs-slide-down-animation-modal" class="hs-overlay hidden size-full fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto" role="dialog" tabindex="-1" aria-labelledby="hs-slide-down-animation-modal-label">
+                            <div class="hs-overlay-animation-target hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto">
+                              @include('MODALS.AddAttendance')
+                            </div>
+                          </div>
                         </div>
                         <div id="horizontal-right-alignment-2" class="hidden" role="tabpanel" aria-labelledby="horizontal-right-alignment-item-2">
                           <p class="text-gray-500 dark:text-neutral-400">
@@ -140,7 +145,7 @@
 
                     {{-- ! MINI CARD 6 --}}
                    <div class="minicard-transform transform transition-transform duration-300 hover:scale-110"> {{-- ! MINI CARD HOVER TRANSFORM --}}
-                    <div class="flex flex-col cursor-pointer bg-white border shadow-sm rounded-xl p-4 md:p-5 dark:bg-neutral-700 dark:border-neutral-700 dark:shadow-neutral-700/70" id="mini-card6">
+                    <div onclick="window.location.href='/launch-discord';" class="flex flex-col cursor-pointer bg-white border shadow-sm rounded-xl p-4 md:p-5 dark:bg-neutral-700 dark:border-neutral-700 dark:shadow-neutral-700/70" id="mini-card6">
                         <img src="{{ asset('img/discord (2).png') }}" alt="" id="mini-card-img3">
                         <p class="flex self-center mt-6 text-xs font-normal text-gray-500 dark:text-neutral-300">Discord</p>
                     </div>
@@ -296,6 +301,8 @@
         </div>
     </div>
 </body>
-<script src="{{ mix('js/app.js') }}"></script>
-<script src="https://cdn.jsdelivr.net/npm/preline/dist/preline.js"></script>
+{{-- <script src="{{ mix('js/app.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/preline/dist/preline.js"></script> --}}
+<script src="{{ asset('js\content.js') }}">
+</script>
 </html>
