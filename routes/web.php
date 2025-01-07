@@ -2,23 +2,29 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Http;
+use App\Http\Controllers\AttendanceController;
+use App\Models\AttendanceModel;
+
+// Route::get('/', function () {
+//     $attendances = AttendanceModel::all(); 
+//     return view('welcome', compact('attendances'));
+// });
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-
 // !! MAKE AN ATTENDANCE ROUTE
-
 Route::get('/Attendance', function () {
     return view('MODALS.AddAttendance');
 });
 
+// !! ROUTE FOR ADDING NEW ATTENDANCE
+Route::post('/AddAttendance',[AttendanceController::class, 'MakeAttendance']) -> name('AddAttendance');
 
 
-
-
-
+//! ROUTE FOR VIEWING ATTENDANCE IN A TABLE
+Route::get('/', [AttendanceController::class, 'ViewAttendance'])->name('attendance.view');
 
 
 
