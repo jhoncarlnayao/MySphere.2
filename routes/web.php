@@ -10,9 +10,18 @@ use App\Models\AttendanceModel;
 //     return view('welcome', compact('attendances'));
 // });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
+Route::get('/', [AttendanceController::class, 'ViewAttendance'])->name('attendance.view');
+
+
+Route::get('/content', function () {
+    return view('CONTENTS.content');
+}) ->name('content');
+
 
 // !! MAKE AN ATTENDANCE ROUTE
 Route::get('/Attendance', function () {
@@ -24,7 +33,7 @@ Route::post('/AddAttendance',[AttendanceController::class, 'MakeAttendance']) ->
 
 
 //! ROUTE FOR VIEWING ATTENDANCE IN A TABLE
-Route::get('/', [AttendanceController::class, 'ViewAttendance'])->name('attendance.view');
+// Route::get('/', [AttendanceController::class, 'ViewAttendance'])->name('attendance.view');
 
 
 

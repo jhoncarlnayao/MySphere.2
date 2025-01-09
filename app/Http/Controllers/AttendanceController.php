@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\AttendanceModel;
+use Illuminate\Support\Facades\DB;
 
 class AttendanceController extends Controller
 {
@@ -36,9 +37,18 @@ class AttendanceController extends Controller
     // !!! VIEW ALL ATTENDANCE IN A TABLE
     public function ViewAttendance(Request $request)
     {
-        $attendances = AttendanceModel::all(); // Change variable name to $attendances
-        return view('welcome', compact('attendances'));
+        $attendances = AttendanceModel::all(); 
+        $totalAttendance = AttendanceModel::where('status', 'Present')->count(); // Count only "Present" records
+        $totalAbsent = AttendanceModel::where('status', 'Absent')->count(); // Count only "Absent" records
+        return view('welcome', compact('attendances', 'totalAttendance','totalAbsent'));
     }
+    
+
+
+
+
+
+
     
 
 }

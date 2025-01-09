@@ -28,8 +28,9 @@
                 <div class="minicard-transform transform transition-transform duration-300 hover:scale-110"> {{-- ! MINI CARD HOVER TRANSFORM --}}
                 <div class="flex flex-col cursor-pointer bg-white border shadow-sm rounded-xl p-4 md:p-5 dark:bg-neutral-700 dark:border-neutral-700 dark:shadow-neutral-700/70" id="mini-card1">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-check"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/></svg>
-                   <p class="mt-4 text-xs font-normal text-gray-500 dark:text-neutral-300">Attendance</p>
-                   <h1 class="text-xl font-bold text-gray-800 dark:text-white">90</h1>
+                   <p class="mt-4 text-xs font-normal text-gray-500 dark:text-neutral-300">Present</p>
+                   <h1 class="text-xl font-bold text-gray-800 dark:text-white">{{ $totalAttendance }}</h1>
+                  
                 </div>
                </div>
 
@@ -37,8 +38,8 @@
                 <div class="minicard-transform transform transition-transform duration-300 hover:scale-110"> {{-- ! MINI CARD HOVER TRANSFORM --}}
                 <div class="flex flex-col cursor-pointer bg-white border shadow-sm rounded-xl p-4 md:p-5 dark:bg-neutral-700 dark:border-neutral-700 dark:shadow-neutral-700/70" id="mini-card1">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-x"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="m14 14-4 4"/><path d="m10 14 4 4"/></svg>
-                   <p class="mt-4 text-xs font-normal text-gray-500 dark:text-neutral-300">Attendance</p>
-                   <h1 class="text-xl font-bold text-gray-800 dark:text-white">90</h1>
+                   <p class="mt-4 text-xs font-normal text-gray-500 dark:text-neutral-300">Absent</p>
+                   <h1 class="text-xl font-bold text-gray-800 dark:text-white">{{ $totalAbsent }}</h1>
                 </div>
               </div>  
 
