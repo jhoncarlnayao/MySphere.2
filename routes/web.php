@@ -23,14 +23,21 @@ Route::get('/content', function () {
 }) ->name('content');
 
 
-// !! MAKE AN ATTENDANCE ROUTE
+// ?? MAKE AN ATTENDANCE ROUTE
 Route::get('/Attendance', function () {
     return view('MODALS.AddAttendance');
+});
+
+// ?? DELETE MODAL ROUTE
+Route::get('/DeleteModal', function () {
+    return view('MODALS.DeleteConfirmation');
 });
 
 // !! ROUTE FOR ADDING NEW ATTENDANCE
 Route::post('/AddAttendance',[AttendanceController::class, 'MakeAttendance']) -> name('AddAttendance');
 
+// !! ROUTE FOR DELETING ATTENDANCE
+Route::delete('AttendanceData/{id}', [AttendanceController::class, 'DeleteAttendance'])->name('DeleteAttendance');
 
 //! ROUTE FOR VIEWING ATTENDANCE IN A TABLE
 // Route::get('/', [AttendanceController::class, 'ViewAttendance'])->name('attendance.view');

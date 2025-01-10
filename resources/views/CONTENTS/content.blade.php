@@ -48,7 +48,7 @@
                 <div class="flex flex-col cursor-pointer bg-white border shadow-sm rounded-xl p-4 md:p-5 dark:bg-neutral-700 dark:border-neutral-700 dark:shadow-neutral-700/70" id="mini-card1">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-heart"><path d="M3 10h18V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h7"/><path d="M8 2v4"/><path d="M16 2v4"/><path d="M21.29 14.7a2.43 2.43 0 0 0-2.65-.52c-.3.12-.57.3-.8.53l-.34.34-.35-.34a2.43 2.43 0 0 0-2.65-.53c-.3.12-.56.3-.79.53-.95.94-1 2.53.2 3.74L17.5 22l3.6-3.55c1.2-1.21 1.14-2.8.19-3.74Z"/></svg>
                    <p class="mt-4 text-xs font-normal text-gray-500 dark:text-neutral-300">Attendance</p>
-                   <h1 class="text-xl font-bold text-gray-800 dark:text-white">90</h1>
+                   <h1 class="text-xl font-bold text-gray-800 dark:text-white">{{ $totalLate }}</h1>
                 </div>
                 </div>
             </div>
@@ -183,54 +183,94 @@
             </div>
         </div>
         
-         {{-- ?? CARD 4 --}}
-         <div class="bg-white border shadow-sm rounded-xl p-4 md:p-5 dark:bg-neutral-800 dark:border-neutral-700 dark:shadow-neutral-700/70" id="card-4">
-          <div class="flex flex-col">
-            <div class="-m-1.5 overflow-x-auto">
-              <div class="p-1.5 min-w-full inline-block align-middle">
-                <div class="overflow-hidden">
-                  <table class="min-w-full">
-                    <thead>
-                      <tr>
-                        <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Name</th>
-                        <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Date</th>
-                        <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Subject</th>
-                        <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Time In</th>
-                        <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Time Out</th>
-                        <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Status</th>
-                        <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"></th>
-                      </tr>
-                    </thead>
-                  </table>
-                  <div class="max-h-96 overflow-y-auto">
-                    <table class="min-w-full">
-                      <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
-                        @foreach ($attendances as $attendance)
-                        <tr>
-                          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">{{ $attendance->name }}</td>
-                          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">{{ $attendance->date }}</td>
-                          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">{{ $attendance->subject }}</td>
-                          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">{{ $attendance->time_in }}</td>
-                          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">{{ $attendance->time_out }}</td>
-                          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">{{ $attendance->status }}</td>
-                          <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium flex gap-x-2 justify-end">
-                            <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-green-600 hover:text-green-800 focus:outline-none focus:text-green-800 disabled:opacity-50 disabled:pointer-events-none dark:text-green-500 dark:hover:text-green-400 dark:focus:text-green-400">
-                              Update
-                            </button>
-                            <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-red-600 hover:text-red-800 focus:outline-none focus:text-red-800 disabled:opacity-50 disabled:pointer-events-none dark:text-red-500 dark:hover:text-red-400 dark:focus:text-red-400">
-                              Delete
-                            </button>
-                          </td>
-                        </tr>
-                        @endforeach
-                      </tbody>
-                    </table>
+        {{-- ?? CARD 4 --}}
+        {{-- ?? CARD 4 --}}
+<div class="bg-white border shadow-sm rounded-xl p-4 md:p-5 dark:bg-neutral-800 dark:border-neutral-700 dark:shadow-neutral-700/70" id="card-4">
+  <div class="flex flex-col">
+    <div class="-m-1.5 overflow-x-auto">
+      <div class="p-1.5 min-w-full inline-block align-middle">
+        <div class="overflow-hidden">
+          <table class="min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
+            <thead >
+              <tr>
+                <th class="px-6 py-3 w-1/6 text-left text-xs font-medium text-neutral-200 uppercase">Name</th>
+                <th class="px-6 py-3 w-1/6 text-left text-xs font-medium text-neutral-200 uppercase">Date</th>
+                <th class="px-6 py-3 w-1/6 text-left text-xs font-medium text-neutral-200 uppercase">Subject</th>
+                <th class="px-6 py-3 w-1/12 text-left text-xs font-medium text-neutral-200 uppercase">Time In</th>
+                <th class="px-6 py-3 w-1/12 text-left text-xs font-medium text-neutral-200 uppercase">Time Out</th>
+                <th class="px-6 py-3 w-1/12 text-left text-xs font-medium text-neutral-200 uppercase">Status</th>
+                <th class="px-6 py-3 w-1/6 text-center text-xs font-medium text-neutral-200 uppercase">Actions</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
+              @foreach ($attendances as $attendance)
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">{{ $attendance->name }}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">{{ $attendance->date }}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">{{ $attendance->subject }}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">{{ $attendance->time_in }}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">{{ $attendance->time_out }}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">{{ $attendance->status }}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-center">
+                  <div class="flex justify-center gap-2">
+                    <button type="button"
+                      class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-green-600 text-white hover:bg-green-700 focus:outline-none">
+                      Update
+                    </button>
+                    <button type="button"
+                      class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none" aria-controls="hs-slide-down-animation-modal-delete" data-hs-overlay="#hs-slide-down-animation-modal-delete">
+                      Delete
+                    </button>
+
+                    <div id="hs-slide-down-animation-modal-delete" class="hs-overlay hidden size-full fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto" role="dialog" tabindex="-1" aria-labelledby="hs-slide-down-animation-modal-label">
+                      <div class="hs-overlay-animation-target hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto">
+                        <div id="DeleteModal">
+                          <div class="w-full flex flex-col bg-white border shadow-sm rounded-xl pointer-events-auto dark:bg-neutral-800 dark:border-neutral-700 dark:shadow-neutral-700/70">
+                              <div class="flex justify-between items-center py-3 px-4 border-b dark:border-neutral-700">
+                              <h3 id="hs-scale-animation-modal-label" class="font-bold text-gray-800 dark:text-white">
+                                Delete Confirmation
+                              </h3>
+                              <button type="button" class="size-8 inline-flex justify-center items-center gap-x-2 rounded-full border border-transparent bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-700 dark:hover:bg-neutral-600 dark:text-neutral-400 dark:focus:bg-neutral-600" aria-label="Close" data-hs-overlay="#hs-scale-animation-modal">
+                                  <span class="sr-only">Cancel</span>
+                                  <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                  <path d="M18 6 6 18"></path>
+                                  <path d="m6 6 12 12"></path>
+                                  </svg>
+                              </button>
+                              </div>
+                              <div class="p-4 overflow-y-auto">
+                              <p class="mt-1 text-gray-800 dark:text-neutral-400">
+                                Are you sure you want to delete this data ?
+                              </p>
+                              </div>
+                              <div class="flex justify-end items-center gap-x-2 py-3 px-4 border-t dark:border-neutral-700">
+                              <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" data-hs-overlay="#hs-scale-animation-modal">
+                                  Close
+                              </button>
+                              <form action="{{ route('DeleteAttendance', $attendance->id) }}" method="POST">
+                                  @csrf
+                                  @method('DELETE')
+                              <button type="submit" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50">
+                                Confirm Delete
+                              </button>
+                              </form>
+                              </div>
+                          </div>
+                          </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
+                </td>
+              </tr>
+              @endforeach
+            </tbody>
+          </table>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
         
         
         

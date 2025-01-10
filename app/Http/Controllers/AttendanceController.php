@@ -34,13 +34,22 @@ class AttendanceController extends Controller
         return redirect('/')->with('success', 'Attendance data has been successfully added.');
     }
 
-    // !!! VIEW ALL ATTENDANCE IN A TABLE
+    // !!! VIEW ALL ATTENDANCE IN A TABLE  ALSO GET THE TOTAL PRESENT,LATE AND ABSENT
     public function ViewAttendance(Request $request)
     {
         $attendances = AttendanceModel::all(); 
         $totalAttendance = AttendanceModel::where('status', 'Present')->count(); // Count only "Present" records
         $totalAbsent = AttendanceModel::where('status', 'Absent')->count(); // Count only "Absent" records
-        return view('welcome', compact('attendances', 'totalAttendance','totalAbsent'));
+        $totalLate= AttendanceModel::where('status', 'Late')->count();  // Count only "Late" records
+        return view('welcome', compact('attendances', 'totalAttendance','totalAbsent','totalLate'));
+    }
+
+    // !!! DELETE DATA IN ATTENDANCE TABLE
+    public function DeleteAttendance($id){
+        $attendanceDelete = AttendanceModel::findOrFail($id);
+        $attendanceDelete ->delete();
+
+        return redirect('/')->with('success', 'Item deleted successfully!');
     }
     
 
