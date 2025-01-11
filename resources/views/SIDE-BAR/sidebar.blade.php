@@ -321,19 +321,10 @@ bg-white border-e border-gray-200 dark:bg-neutral-800 dark:border-neutral-700"
                         </li>
 
                         <li>
-                            <button class="sidebar-button" data-content="content1">Button</button>
+                            <button class="sidebar-button w-full flex items-center gap-x-3 py-2 px-2.5 text-sm text-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300" data-content="content1">Chat Bot</button>
                         </li>
                         <li>
-                            <a class="flex items-center gap-x-3 py-2 px-2.5 text-sm text-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300"
-                                href="#">
-                                <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-                                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-                                </svg>
-                                Documentation
-                            </a>
+                            <button class="sidebar-button w-full flex items-center gap-x-3 py-2 px-2.5 text-sm text-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300" data-content="content2">Main Page</button>
                         </li>
                       
                     </ul>

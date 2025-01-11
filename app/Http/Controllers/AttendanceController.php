@@ -41,7 +41,9 @@ class AttendanceController extends Controller
         $totalAttendance = AttendanceModel::where('status', 'Present')->count(); // Count only "Present" records
         $totalAbsent = AttendanceModel::where('status', 'Absent')->count(); // Count only "Absent" records
         $totalLate= AttendanceModel::where('status', 'Late')->count();  // Count only "Late" records
-        return view('welcome', compact('attendances', 'totalAttendance','totalAbsent','totalLate'));
+        return view('welcome', compact('attendances', 'totalAttendance', 'totalAbsent', 'totalLate'))
+        ->with(compact('attendances', 'totalAttendance', 'totalAbsent', 'totalLate'));
+    
     }
 
     // !!! DELETE DATA IN ATTENDANCE TABLE

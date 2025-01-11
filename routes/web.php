@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\AttendanceController;
-use App\Http\Controllers\PageController;
+use App\Http\Controllers\ContentController;
 use App\Models\AttendanceModel;
 
 // Route::get('/', function () {
@@ -18,10 +18,11 @@ use App\Models\AttendanceModel;
 
 Route::get('/', [AttendanceController::class, 'ViewAttendance'])->name('attendance.view');
 
+Route::get('/content2', function () {
+    return view('CONTENTS.content2');
+});
 
-Route::get('/content', function () {
-    return view('CONTENTS.content');
-}) ->name('content');
+
 
 
 // ?? MAKE AN ATTENDANCE ROUTE
@@ -35,9 +36,6 @@ Route::get('/DeleteModal', function () {
 });
 
 
-Route::get('/load-content/{contentId}', [PageController::class, 'LoadContent']);
-
-
 
 // !! ROUTE FOR ADDING NEW ATTENDANCE
 Route::post('/AddAttendance',[AttendanceController::class, 'MakeAttendance']) -> name('AddAttendance');
@@ -49,7 +47,7 @@ Route::delete('AttendanceData/{id}', [AttendanceController::class, 'DeleteAttend
 // Route::get('/', [AttendanceController::class, 'ViewAttendance'])->name('attendance.view');
 
 
-
+Route::get('/content/{type}', [ContentController::class, 'loadContent'])->name('load.content');
 
 // !! OPEN A DISCORD APP
 Route::get('/launch-discord', function () {
