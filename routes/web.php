@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\PageController;
 use App\Models\AttendanceModel;
 
 // Route::get('/', function () {
@@ -32,6 +33,11 @@ Route::get('/Attendance', function () {
 Route::get('/DeleteModal', function () {
     return view('MODALS.DeleteConfirmation');
 });
+
+
+Route::get('/load-content/{contentId}', [PageController::class, 'LoadContent']);
+
+
 
 // !! ROUTE FOR ADDING NEW ATTENDANCE
 Route::post('/AddAttendance',[AttendanceController::class, 'MakeAttendance']) -> name('AddAttendance');

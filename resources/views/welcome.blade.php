@@ -15,7 +15,7 @@
             {{-- !! SIDE BAR --}}
             @include('SIDE-BAR.sidebar')
         </div>
-        <div class="content">
+        <div class="content" id="content">
             {{-- !! CONTENT --}}
             @include('CONTENTS.content')
         </div>
@@ -25,5 +25,23 @@
 
     <script src="{{ mix('js/app.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/preline/dist/preline.js"></script>
+    <script>
+        document.querySelectorAll('.sidebar-button').forEach(button => {
+            button.addEventListener('click', function() {
+                let contentId = button.getAttribute('data-content');  // Get the content identifier
+
+                fetchContent(contentId);  // Call the function to load the content
+            });
+        });
+
+        function fetchContent(contentId) {
+            fetch(`/load-content/${contentId}`)  // Request content from server
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('content').innerHTML = data;  // Inject the content into the content area
+                })
+                .catch(error => console.error('Error loading content:', error));
+        }
+    </script>
 </body>
 </html>

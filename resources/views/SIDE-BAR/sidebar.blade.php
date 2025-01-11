@@ -321,24 +321,7 @@ bg-white border-e border-gray-200 dark:bg-neutral-800 dark:border-neutral-700"
                         </li>
 
                         <li>
-                            <a class="flex items-center gap-x-3 py-2 px-2.5 text-sm text-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300"
-                                href="#">
-                                <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
-                                    <line x1="16" x2="16" y1="2" y2="6" />
-                                    <line x1="8" x2="8" y1="2" y2="6" />
-                                    <line x1="3" x2="21" y1="10" y2="10" />
-                                    <path d="M8 14h.01" />
-                                    <path d="M12 14h.01" />
-                                    <path d="M16 14h.01" />
-                                    <path d="M8 18h.01" />
-                                    <path d="M12 18h.01" />
-                                    <path d="M16 18h.01" />
-                                </svg>
-                                Calendar <span>
-                            </a>
+                            <button class="sidebar-button" data-content="content1">Button</button>
                         </li>
                         <li>
                             <a class="flex items-center gap-x-3 py-2 px-2.5 text-sm text-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300"
