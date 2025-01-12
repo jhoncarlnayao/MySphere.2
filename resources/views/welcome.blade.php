@@ -337,15 +337,23 @@ bg-white border-e border-gray-200 dark:bg-neutral-800 dark:border-neutral-700"
         </div>
         <div class="content" id="content">
             {{-- !! CONTENT --}}
-            @include('CONTENTS.content')
+            {{-- @include('CONTENTS.content') --}}
+            @include('CONTENTS.content2')
         </div>
     </div>
     
-      
 
-    <script src="{{ mix('js/app.js') }}"></script>
+
+
+
+
+
+
+
+
+<script src="{{ mix('js/app.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/preline/dist/preline.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Add jQuery for AJAX -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
 <script>
     document.getElementById('chatBotBtn').addEventListener('click', function() {
         // Use AJAX to load the content dynamically

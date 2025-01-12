@@ -1,0 +1,11 @@
+body{
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+#card-1{
+    width: 100pc;
+    height: 54pc;
+}
+
