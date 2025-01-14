@@ -51,7 +51,7 @@
             const userMessage = messageInput.value.trim();
             if (userMessage === '') return;
 
-            // Show the user's message in the chat
+        //    THIS IS THE MESSAGE USER SENT
             messageBox.innerHTML += `<div class="text-right my-2">
                 <li class="flex ms-auto gap-x-2 sm:gap-x-4">
                     <div class="grow text-end space-y-3">

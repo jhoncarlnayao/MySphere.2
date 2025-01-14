@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use App\Models\TodoList;
+
+
 class BotManController extends Controller
 {
     public function BotMan(Request $request) { 
@@ -102,10 +105,6 @@ class BotManController extends Controller
         }
 // !!!!!! This is the code for the calculator !!!!!! ENDDDD=====================================================================================================
 
-
-
-
-
         // If no match for addition, check predefined responses
         $reply = $responses[$message] ?? "I don't understand that.";
 
@@ -133,9 +132,82 @@ class BotManController extends Controller
         }
 // !!!!!!!!!!! This is the code for a random jokes =======================================================================
 
+
+
+// !!!!!!!!!!! This is code for a todo list START======================================================================
+
+if (preg_match('/add\s+(?:this\s+)?to\s+my\s+to[- ]?do\s+list\s+title:\s*(.+?)\s+description:\s*(.+)/i', $message, $matches)) {
+    $title = trim($matches[1]);
+    $description = trim($matches[2]);
+
+    if (empty($title) || empty($description)) {
+        return response()->json([
+            'reply' => "❌ Title or Description cannot be empty. Please try again.",
+        ]);
+    }
+
+    try {
+        TodoList::create([
+            'title' => $title,
+            'description' => $description,
+        ]);
+
+        return response()->json([
+            'reply' => "✅ Added to your To-Do List!\n📌 *Title:* $title\n📝 *Description:* $description",
+            'follow_up' => 'Need to add anything else?'
+        ]);
+    } catch (\Exception $e) {
+        // \Log::error("Failed to add to-do item: " . $e->getMessage());
+        return response()->json([
+            'reply' => "❌ Failed to save your task. Please try again later.",
+        ]);
+    }
+}
+
+
+
+// ?? This is to remove a todo list in my list 
+if (preg_match('/remove (.*?) from my todo list/i', $message, $matches)) {
+    $title = trim($matches[1]);
+    
+    $deleted = TodoList::where('title', $title)->delete();
+
+    if ($deleted) {
+        return response()->json([
+            'reply' => "Removed '$title' from your To-Do List.",
+        ]);
+    } else {
+        return response()->json([
+            'reply' => "Couldn't find '$title' in your To-Do List.",
+        ]);
+    }
+}
+
+
+// ?? This code is to retrieve the todo list 
+if (preg_match('/show my todo list/i', $message)) {
+    $tasks = TodoList::all();
+
+    if ($tasks->isEmpty()) {
+        return response()->json(['reply' => "Your To-Do List is empty."]);
+    }
+
+    $taskList = "Here's your To-Do List:\n\n";
+    foreach ($tasks as $task) {
+        $taskList .= "{$task->title}\n- {$task->description}\n\n";
+    }
+
+    return response()->json([
+        'reply' => $taskList,
+        'follow_up' => 'Anything else you need?'
+    ]);
+}
+
+
+// !!!!!!!!!!! This is code for a todo list END======================================================================
         // If the reply is an array (with both text and images)
         if (is_array($reply)) {
-            // Send the response and a follow-up message
+            // Send the response and a follow-up message``
             return response()->json([
                 'text' => $reply['text'],
                 'img' => $reply['img'],
